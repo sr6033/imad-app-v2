@@ -1,5 +1,5 @@
-var express = require('express');
-var morgan = require('morgan');
+var express = require('express'); //to create the web server
+var morgan = require('morgan');   //to output log of our servers
 var path = require('path');
 
 var app = express();
