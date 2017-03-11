@@ -5,21 +5,55 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var content = {
-	title: "Article One | Shubham Rath",
-	heading: "Article One",
-	date: "March 11, 2017",
-	content: `
-	<p>
-	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
-	</p>
-	<p>
-	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
-	</p>
-	<p>
-	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
-	</p>
-	`
+var articles = {
+    'article-one': {
+    	title: "Article One | Shubham Rath",
+    	heading: "Article One",
+    	date: "March 11, 2017",
+    	content: `
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	`
+    },
+    'article-two': {
+        title: "Article Two | Shubham Rath",
+    	heading: "Article Two",
+    	date: "March 11, 2017",
+    	content: `
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	`
+    },
+    'article-three': {
+        title: "Article Three | Shubham Rath",
+    	heading: "Article Three",
+    	date: "March 11, 2017",
+    	content: `
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	<p>
+    	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
+    	</p>
+    	`
+    }
 };
 
 function createTemplate(data) {
@@ -64,8 +98,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function (req, res) {
-    res.send(createTemplate(content));
+app.get('/:articleName', function (req, res) {
+    //articleName == article-one
+    var articleName = req.param.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two', function (req, res) {
