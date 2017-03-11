@@ -18,7 +18,7 @@ var content = {
 	</p>
 	<p>
 	This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.This is the paragraph.
-	</p>"
+	</p>
 	`
 };
 
